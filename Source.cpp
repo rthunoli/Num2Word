@@ -93,6 +93,6 @@ int main()
 			break;
 		cout << n2w(stoi(number)) << endl;
 	}
-	
+	system("pause");
 	return 0;
 }
