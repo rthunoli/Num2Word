@@ -1,10 +1,9 @@
 #include<iostream>
 #include<map>
 #include<string>
-
 using namespace std;
 
-string n2w(int number)
+string n2w(long long number)
 {
 	map<int, string>nw;
 	nw[0] = "zero";
@@ -71,7 +70,14 @@ string n2w(int number)
 				word = n2w(rem);
 			word = n2w(number) + " million " + word;
 		}
-
+		else if (number < 1000000000000)	//less than one trillion
+		{
+			rem = number % 1000000000;
+			number /= 1000000000;
+			if (rem > 0)
+				word = n2w(rem);
+			word = n2w(number) + " billion " + word;
+		}
 	}
 	else
 	{
@@ -83,7 +89,6 @@ string n2w(int number)
 
 int main()
 {
-
 	string number;
 	while (true)
 	{
@@ -91,7 +96,7 @@ int main()
 		cin >> number;
 		if (number == "q" || number == "Q")
 			break;
-		cout << n2w(stoi(number)) << endl;
+		cout << n2w(stoll(number)) << endl;
 	}
 	system("pause");
 	return 0;
